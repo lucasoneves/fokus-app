@@ -1,4 +1,4 @@
-import { Text, View, Image } from "react-native";
+import { Text, View, Image, Pressable } from "react-native";
 
 export default function Index() {
   return (
@@ -10,7 +10,18 @@ export default function Index() {
           resizeMode="contain"
         />
       </View>
-      <View style={styles.actions} />
+      <View style={styles.actions}>
+        <Text style={styles.timer}>25:00</Text>
+        <Pressable style={styles.button}>
+          <Text style={styles.buttonText}>Start</Text>
+        </Pressable>
+      </View>
+      <View style={styles.footer}>
+        <Text style={styles.footerText}>
+          Projeto fictício e sem fins comerciais.
+        </Text>
+        <Text style={styles.footerText}>Desenvolvido por Alura.</Text>
+      </View>
     </View>
   );
 }
@@ -41,5 +52,35 @@ const styles = {
     borderRadius: 12,
     borderWidth: 2,
     borderColor: "#144480",
+    gap: 32,
+  },
+  timer: {
+    color: "#fff",
+    fontSize: 60,
+    fontWeight: "bold",
+    textAlign: "center",
+  },
+  button: {
+    backgroundColor: "#B872FF",
+    padding: 12,
+    borderRadius: 12,
+  },
+  buttonText: {
+    fontSize: 30,
+    fontWeight: "bold",
+    color: "#021123",
+    textAlign: "center",
+  },
+  footer: {
+    width: "100%",
+    gap: 4,
+    padding: 20,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  footerText: {
+    textAlign: "center",
+    color: "#98A0A8",
+    fontSize: 16,
   },
 };
