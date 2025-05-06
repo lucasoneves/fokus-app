@@ -1,17 +1,54 @@
 import { Text, View, Image, Pressable } from "react-native";
+import { useState } from "react";
+
+const pomodoro = [
+  {
+    id: "focus",
+    initialValue: 25,
+    image: require("./pomodoro.png"),
+  },
+  {
+    id: "short",
+    initialValue: 5,
+    image: require("./short.png"),
+  },
+  {
+    id: "long",
+    initialValue: 15,
+    image: require("./long.png"),
+  },
+];
 
 export default function Index() {
+  const [timerType, setTimerType] = useState(pomodoro[0]);
+
   return (
     <View style={styles.container}>
       <View style={styles.wrapperImage}>
         <Image
           style={styles.mainImage}
-          source={require("./pomodoro.png")}
+          source={timerType.image}
           resizeMode="contain"
         />
       </View>
       <View style={styles.actions}>
-        <Text style={styles.timer}>25:00</Text>
+        <View style={styles.context}>
+          <Pressable style={styles.contextTextButtonActive}>
+            <Text style={styles.contextTextButton}>Foco</Text>
+          </Pressable>
+          <Pressable>
+            <Text style={styles.contextTextButton}>Pausa curta</Text>
+          </Pressable>
+          <Pressable>
+            <Text style={styles.contextTextButton}>Pausa longa</Text>
+          </Pressable>
+        </View>
+        <Text style={styles.timer}>
+          {new Date(timerType.initialValue * 1000).toLocaleTimeString("pt-BR", {
+            minute: "2-digit",
+            second: "2-digit",
+          })}
+        </Text>
         <Pressable style={styles.button}>
           <Text style={styles.buttonText}>Start</Text>
         </Pressable>
@@ -53,6 +90,21 @@ const styles = {
     borderWidth: 2,
     borderColor: "#144480",
     gap: 32,
+  },
+  context: {
+    flexDirection: "row",
+    gap: 12,
+    justifyContent: "space-around",
+    alignItems: "center",
+  },
+  contextTextButton: {
+    color: "#fff",
+    padding: 8,
+    fontSize: 12.5,
+  },
+  contextTextButtonActive: {
+    backgroundColor: "#144480",
+    borderRadius: 8,
   },
   timer: {
     color: "#fff",
