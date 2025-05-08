@@ -6,16 +6,19 @@ const pomodoro = [
     id: "focus",
     initialValue: 25,
     image: require("./pomodoro.png"),
+    display: "Foco",
   },
   {
     id: "short",
     initialValue: 5,
     image: require("./short.png"),
+    display: "Pausa curta",
   },
   {
     id: "long",
     initialValue: 15,
     image: require("./long.png"),
+    display: "Pausa longa",
   },
 ];
 
@@ -33,15 +36,17 @@ export default function Index() {
       </View>
       <View style={styles.actions}>
         <View style={styles.context}>
-          <Pressable style={styles.contextTextButtonActive}>
-            <Text style={styles.contextTextButton}>Foco</Text>
-          </Pressable>
-          <Pressable>
-            <Text style={styles.contextTextButton}>Pausa curta</Text>
-          </Pressable>
-          <Pressable>
-            <Text style={styles.contextTextButton}>Pausa longa</Text>
-          </Pressable>
+          {pomodoro.map((p) => (
+            <Pressable
+              onPress={() => setTimerType(p)}
+              key={p.id}
+              style={
+                timerType.id === p.id ? styles.contextTextButtonActive : null
+              }
+            >
+              <Text style={styles.contextTextButton}>{p.display}</Text>
+            </Pressable>
+          ))}
         </View>
         <Text style={styles.timer}>
           {new Date(timerType.initialValue * 1000).toLocaleTimeString("pt-BR", {
