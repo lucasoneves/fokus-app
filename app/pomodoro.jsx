@@ -5,6 +5,7 @@ import ActionButton from "@/components/ActionButton";
 import Timer from "@/components/Timer";
 
 import { IconPlay, IconPause } from "@/components/Icons";
+import { Link } from "expo-router";
 
 const pomodoro = [
   {
@@ -69,6 +70,9 @@ export default function Pomodoro() {
 
   return (
     <View style={styles.container}>
+      <Link href={"/"}>
+        <Text style={styles.text}>Home</Text>
+      </Link>
       <View style={styles.wrapperImage}>
         <Image
           style={styles.mainImage}

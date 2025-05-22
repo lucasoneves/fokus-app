@@ -1,13 +1,57 @@
 import { Link } from "expo-router";
-import { View, Text } from "react-native";
+import { View, Text, Image, StyleSheet } from "react-native";
+import FocusButton from "../components/FocusButton";
+import Footer from "../components/Footer";
 
 export default function Index() {
   return (
-    <View>
-      <Text>Home</Text>
-      <Link href={"/pomodoro"}>
-        <Text>Pomodoro</Text>
-      </Link>
+    <View style={styles.container}>
+      <Image
+        style={styles.logo}
+        source={require("../assets/images/logo.png")}
+        alt="Fokus - Productivity App"
+        width={158}
+        height={376}
+      />
+      <Text style={styles.text}>
+        Otimize sua{"\n"} produtividade,{"\n"}
+        <Text style={styles.bold}>mergulhe no que{"\n"} importa</Text>
+      </Text>
+      <Image
+        style={styles.image}
+        source={require("../assets/images/home.png")}
+        alt="Fokus - Productivity App"
+        resizeMode="contain"
+        width={150}
+        height={150}
+      />
+      <FocusButton title={"Quero iniciar!"} />
+      <Footer />
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#021123",
+    gap: 30,
+  },
+  image: {
+    flex: 1,
+    width: "100%",
+    maxHeight: 300,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  text: {
+    fontSize: 30,
+    textAlign: "center",
+    color: "#fff",
+  },
+  bold: {
+    fontWeight: "bold",
+  },
+});
