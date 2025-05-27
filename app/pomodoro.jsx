@@ -70,9 +70,6 @@ export default function Pomodoro() {
 
   return (
     <View style={styles.container}>
-      <Link href={"/"}>
-        <Text style={styles.text}>Home</Text>
-      </Link>
       <View style={styles.wrapperImage}>
         <Image
           style={styles.mainImage}
@@ -91,6 +88,7 @@ export default function Pomodoro() {
             />
           ))}
         </View>
+
         <Timer totalSeconds={seconds} />
         <FocusButton
           onPress={() => toggleTimer()}

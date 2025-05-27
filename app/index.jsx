@@ -1,4 +1,4 @@
-import { Link } from "expo-router";
+import { router } from "expo-router";
 import { View, Text, Image, StyleSheet } from "react-native";
 import FocusButton from "../components/FocusButton";
 import Footer from "../components/Footer";
@@ -11,7 +11,7 @@ export default function Index() {
         source={require("../assets/images/logo.png")}
         alt="Fokus - Productivity App"
         width={158}
-        height={376}
+        height={40}
       />
       <Text style={styles.text}>
         Otimize sua{"\n"} produtividade,{"\n"}
@@ -22,10 +22,13 @@ export default function Index() {
         source={require("../assets/images/home.png")}
         alt="Fokus - Productivity App"
         resizeMode="contain"
-        width={150}
-        height={150}
+        width={636}
+        height={533}
       />
-      <FocusButton title={"Quero iniciar!"} />
+      <FocusButton
+        title={"Quero iniciar!"}
+        onPress={() => router.navigate("/pomodoro")}
+      />
       <Footer />
     </View>
   );
