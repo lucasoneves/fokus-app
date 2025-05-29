@@ -1,11 +1,11 @@
 import { router } from "expo-router";
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, Text, Image, StyleSheet, SafeAreaView } from "react-native";
 import FocusButton from "../components/FocusButton";
 import Footer from "../components/Footer";
 
 export default function Index() {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Image
         style={styles.logo}
         source={require("../assets/images/logo.png")}
@@ -30,7 +30,7 @@ export default function Index() {
         onPress={() => router.navigate("/pomodoro")}
       />
       <Footer />
-    </View>
+    </SafeAreaView>
   );
 }
 
