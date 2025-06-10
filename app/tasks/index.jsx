@@ -6,7 +6,7 @@ import { router } from "expo-router";
 export default function Tasks() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tasks</Text>
+      <Text style={styles.title}>Lista de tarefas</Text>
       <TaskItem completed text="Estudar React" />
       <TaskItem completed={false} text="Estudar React Native" />
       <FocusButton
