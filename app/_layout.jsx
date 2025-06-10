@@ -1,5 +1,8 @@
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { Drawer } from "expo-router/drawer";
+import { router } from "expo-router";
+
+import { IconArrowBack } from "../components/Icons";
 
 export default function Layout() {
   return (
@@ -43,7 +46,18 @@ export default function Layout() {
         />
         <Drawer.Screen
           name="add-task/index"
-          options={{ title: "", drawerLabel: "Adicionar tarefa" }}
+          options={{
+            title: "",
+            drawerLabel: "Adicionar tarefa",
+            headerLeft: () => {
+              return (
+                <IconArrowBack
+                  onPress={() => router.navigate("/tasks")}
+                  style={{ marginLeft: 16 }}
+                />
+              );
+            },
+          }}
         />
       </Drawer>
     </GestureHandlerRootView>

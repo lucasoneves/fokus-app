@@ -10,9 +10,11 @@ export default function TaskItem({
   return (
     <View style={styles.card}>
       <Pressable onPress={onToggleComplete}>
-        <IconCheck completed={completed} />
+        <IconCheck checked={completed} />
       </Pressable>
-      <Text style={styles.text}>{text}</Text>
+      <Text style={[styles.text, completed && styles.textCompleted]}>
+        {text}
+      </Text>
       <Pressable onPress={onPressEdit}>
         <IconPencil />
       </Pressable>
@@ -36,5 +38,8 @@ const styles = StyleSheet.create({
     color: "#021123",
     fontSize: 18,
     fontWeight: "500",
+  },
+  textCompleted: {
+    textDecorationLine: "line-through",
   },
 });

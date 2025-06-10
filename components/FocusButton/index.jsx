@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   buttonText: {
-    fontSize: 30,
+    fontSize: 18,
     fontWeight: "bold",
     color: "#021123",
     textAlign: "center",
