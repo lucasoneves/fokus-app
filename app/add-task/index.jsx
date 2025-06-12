@@ -1,7 +1,21 @@
 import { View, Text, StyleSheet, Pressable, TextInput } from "react-native";
 import { IconSave, IconTrash } from "../../components/Icons";
+import useTaskContext from "../../components/context/useTaskContext";
+import { useState } from "react";
+import { router } from "expo-router";
 
 export default function AddTask() {
+  const { addTasks } = useTaskContext();
+
+  const [description, setDescription] = useState();
+
+  const submitTask = () => {
+    if (!description) return;
+    addTasks(description);
+    setDescription("");
+    router.navigate("/tasks");
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Adicionar Tarefa</Text>
@@ -15,6 +29,8 @@ export default function AddTask() {
             numberOfLines={12}
             multiline
             textAlignVertical="top"
+            value={description}
+            onChangeText={setDescription}
           />
         </View>
         <View style={styles.actions}>
@@ -22,7 +38,7 @@ export default function AddTask() {
             <IconTrash />
             <Text style={styles.textButton}>Apagar</Text>
           </Pressable>
-          <Pressable style={styles.button}>
+          <Pressable style={styles.button} onPress={submitTask}>
             <IconSave />
             <Text style={styles.textButton}>Salvar</Text>
           </Pressable>
@@ -37,6 +53,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#021123",
     gap: 30,
+    padding: 24,
   },
 
   formWrapper: {
