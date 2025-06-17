@@ -6,7 +6,6 @@ export function TasksProvider({ children }) {
   const [tasks, setTasks] = useState([]);
 
   const addTasks = (description) => {
-    console.log("tarefa vai ser adicionada");
     setTasks((oldState) => {
       return [
         ...oldState,

@@ -2,13 +2,19 @@ import { View, Text, StyleSheet } from "react-native";
 import TaskItem from "../../components/TaskItem";
 import FocusButton from "../../components/FocusButton";
 import { router } from "expo-router";
+import useTaskContext from "../../components/context/useTaskContext";
 
 export default function Tasks() {
+  const { tasks } = useTaskContext();
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Lista de tarefas</Text>
-      <TaskItem completed text="Estudar React" />
-      <TaskItem completed={false} text="Estudar React Native" />
+      {tasks.map((t) => {
+        return (
+          <TaskItem key={t.id} completed={t.completed} text={t.description} />
+        );
+      })}
       <FocusButton
         title="Adicionar tarefa"
         onPress={() => router.navigate("/add-task")}
