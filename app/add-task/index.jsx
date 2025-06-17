@@ -35,7 +35,7 @@ export default function AddTask() {
         </View>
         <View style={styles.actions}>
           <Pressable style={styles.button}>
-            <IconTrash />
+            <IconTrash fill={"#fff"} size={14} />
             <Text style={styles.textButton}>Apagar</Text>
           </Pressable>
           <Pressable style={styles.button} onPress={submitTask}>

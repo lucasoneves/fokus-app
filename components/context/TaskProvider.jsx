@@ -33,15 +33,7 @@ export function TasksProvider({ children }) {
 
   const deleteTask = (id) => {
     setTasks((oldState) => {
-      return oldState.filter((task) => {
-        if (task.id != id) {
-          return {
-            ...task,
-            completed: !task.completed,
-          };
-        }
-        return task;
-      });
+      return oldState.filter((task) => task.id !== id);
     });
   };
 

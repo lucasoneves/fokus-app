@@ -1,11 +1,12 @@
 import { View, Text, Pressable, StyleSheet } from "react-native";
-import { IconCheck, IconPencil } from "../Icons";
+import { IconCheck, IconPencil, IconTrash } from "../Icons";
 
 export default function TaskItem({
   completed,
   text,
   onToggleComplete,
   onPressEdit,
+  onPressDelete,
 }) {
   return (
     <View style={styles.card}>
@@ -17,6 +18,9 @@ export default function TaskItem({
       </Text>
       <Pressable onPress={onPressEdit}>
         <IconPencil />
+      </Pressable>
+      <Pressable onPress={onPressDelete}>
+        <IconTrash size={20} fill={"#021123"} />
       </Pressable>
     </View>
   );
